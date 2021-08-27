@@ -8,9 +8,9 @@
     "build": "elm-optimize-level-2 src/Main.elm --output=public/elm.js && uglifyjs public/elm.js --compress --passes=3 'pure_funcs=[F2,F3,F4,F5,F6,F7,F8,F9,A2,A3,A4,A5,A6,A7,A8,A9],pure_getters,unsafe_comps,unsafe' --mangle 'reserved=[F2,F3,F4,F5,F6,F7,F8,F9,A2,A3,A4,A5,A6,A7,A8,A9]' --output public/elm.js"
   },
   "devDependencies": {
+    "elm": "0.19.1-5",
     "elm-live": "4.0.2",
     "elm-optimize-level-2": "0.1.5",
-    "elm": "0.19.1-5",
     "uglify-js": "3.14.1"
   },
   "keywords": [
