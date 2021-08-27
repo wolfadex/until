@@ -207,16 +207,14 @@ updateRunning msg =
                                     let
                                         timeUntil =
                                             Time.Extra.partsToPosix model.zone
-                                                (Debug.log "parts"
-                                                    { year = year
-                                                    , month = month
-                                                    , day = day
-                                                    , hour = hour
-                                                    , minute = minute
-                                                    , second = 0
-                                                    , millisecond = 0
-                                                    }
-                                                )
+                                                { year = year
+                                                , month = month
+                                                , day = day
+                                                , hour = hour
+                                                , minute = minute
+                                                , second = 0
+                                                , millisecond = 0
+                                                }
                                     in
                                     { model
                                         | countdowns = Dict.insert name timeUntil model.countdowns
