@@ -250,8 +250,12 @@ updateNewCountdown fn model =
 initializedNewCountdown : Zone -> Posix -> NewCountdown
 initializedNewCountdown zone time =
     { name = Field.init ""
-    , date = Field.init (DateTime.posixToYearMonthDay zone time)
-    , time = Field.init (DateTime.posixToHourMinute zone time)
+    , date =
+        Field.init (DateTime.posixToYearMonthDay zone time)
+            |> Field.validate DateTime.parseYearMonthDay
+    , time =
+        Field.init (DateTime.posixToHourMinute zone time)
+            |> Field.validate DateTime.parseHourMinute
     }
 
 

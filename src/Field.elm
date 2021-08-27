@@ -6,6 +6,7 @@ module Field exposing
     , getValue
     , init
     , isValid
+    , validate
     )
 
 
@@ -22,6 +23,21 @@ init =
 
 fromString : (String -> Result err a) -> String -> Field err a
 fromString validator input =
+    case validator input of
+        Err err ->
+            Invlaid input err
+
+        Ok a ->
+            Valid input a
+
+
+validate : (String -> Result err a) -> Field err a -> Field err a
+validate validator field =
+    let
+        input : String
+        input =
+            getInput field
+    in
     case validator input of
         Err err ->
             Invlaid input err
