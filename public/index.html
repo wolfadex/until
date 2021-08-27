@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style></style>
+  </head>
+
+  <body>
+    <script src="elm.js"></script>
+    <script>
+      const maybeSaveData = localStorage.getItem("save-data");
+      let saveData = null;
+
+      try {
+        saveData = JSON.parse(maybeSaveData);
+      } catch (err) {}
+
+      const app = Elm.Main.init({
+        flags: {
+          windowWidth: window.innerWidth,
+          saveData: saveData,
+        },
+      });
+
+      app.ports.save.subscribe(function (data) {
+        localStorage.setItem("save-data", JSON.stringify(data));
+      });
+    </script>
+  </body>
+</html>
